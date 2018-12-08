@@ -15,13 +15,13 @@ RUN apk add --update --no-cache --virtual .ext-deps \
         curl \
         curl-dev \
         php7-openssl \
-        php7-curl 
+        php7-curl
 
 RUN apk add --no-cache \
     libmcrypt-dev \
     libltdl \
     && docker-php-ext-configure mcrypt \
-    && docker-php-ext-install mcrypt 
+    && docker-php-ext-install mcrypt
 
 RUN \
     docker-php-ext-configure pdo_mysql && \
@@ -42,3 +42,5 @@ RUN \
     docker-php-source delete
 
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/bin --filename=composer
+
+RUN docker-php-ext-install bcmath
