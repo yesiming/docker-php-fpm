@@ -3,7 +3,7 @@ MAINTAINER simon simon@yesiming.com
 RUN apk update && apk add --no-cache autoconf openssl-dev g++ make && \
     pecl install mongo && \
     docker-php-ext-enable mongo && \
-    pecl install mongodb-1.4.5 && \
+    pecl install mongodb-1.3.0 && \
     docker-php-ext-enable mongodb && \
     apk del --purge autoconf openssl-dev g++ make
 
