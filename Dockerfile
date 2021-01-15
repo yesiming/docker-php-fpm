@@ -1,8 +1,6 @@
-
 FROM php:5.6-fpm-alpine
 MAINTAINER simon simon@yesiming.com
-RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.ustc.edu.cn/g' /etc/apk/repositories \
-&& apk update && apk add --no-cache autoconf openssl-dev g++ make && \
+RUN apk update && apk add --no-cache autoconf openssl-dev g++ make && \
     pecl install mongo && \
     docker-php-ext-enable mongo && \
     pecl install mongodb && \
