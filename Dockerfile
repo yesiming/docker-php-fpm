@@ -1,4 +1,4 @@
-FROM php:7.1-fpm-alpine
+FROM php:7.3-fpm-alpine
 MAINTAINER simon simon@yesiming.com
 RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.ustc.edu.cn/g' /etc/apk/repositories
 
@@ -19,9 +19,7 @@ RUN apk add --update --no-cache --virtual .ext-deps \
 
 RUN apk add --no-cache \
     libmcrypt-dev \
-    libltdl \
-    && docker-php-ext-configure mcrypt \
-    && docker-php-ext-install mcrypt
+    libltdl
 
 RUN \
     docker-php-ext-configure pdo_mysql && \
@@ -44,21 +42,3 @@ RUN \
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/bin --filename=composer
 
 RUN docker-php-ext-install bcmath
-
-COPY ./scws /scws
-
-Run \
-    cd /scws/scws-1.2.3 && \
-    ./configure --prefix=/usr/local/scws && \
-    make && \
-    make install && \
-    cp /scws/dict.utf8.xdb  /usr/local/scws/etc && \
-    cp /scws/dict.xdb  /usr/local/scws/etc && \
-    cd phpext && \
-    phpize && \
-    ./configure --with-scws=/usr/local/scws && \
-    make && \
-    make install && \
-    cp /scws/docker-php-ext-scws.ini /usr/local/etc/php/conf.d && \
-    docker-php-ext-enable scws && \
-    rm -rf /scws
