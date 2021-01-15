@@ -1,6 +1,5 @@
 FROM php:7.3-fpm-alpine
 MAINTAINER simon simon@yesiming.com
-RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.ustc.edu.cn/g' /etc/apk/repositories
 
 RUN apk add --update --no-cache --virtual .ext-deps \
         libjpeg-turbo-dev \
