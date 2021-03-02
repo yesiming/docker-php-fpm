@@ -27,14 +27,14 @@ RUN \
     docker-php-ext-configure gd \
     --with-jpeg-dir=/usr/include --with-png-dir=/usr/include --with-webp-dir=/usr/include --with-freetype-dir=/usr/include && \
     docker-php-ext-configure sockets && \
-    docker-php-ext-install pdo_mysql opcache exif gd sockets
+    docker-php-ext-install pdo_mysql opcache exif gd sockets mysqli
 
 
 RUN \
     pecl channel-update pecl.php.net && \
     pecl install redis && \
     pecl install mongodb && \
-    docker-php-ext-enable redis mongodb && \
+    docker-php-ext-enable redis mongodb mysqli && \
     pecl clear-cache && \
     docker-php-source delete
 
