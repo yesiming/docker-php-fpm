@@ -1,5 +1,5 @@
 
-FROM php:5.6-fpm-alpine
+FROM php:5.4-fpm-alpine
 MAINTAINER simon simon@yesiming.com
 RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.ustc.edu.cn/g' /etc/apk/repositories \
 && apk update && apk add --no-cache autoconf openssl-dev g++ make && \
