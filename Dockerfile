@@ -43,3 +43,8 @@ RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/bin -
 RUN docker-php-ext-install bcmath
 
 RUN apk add --update nodejs npm
+
+RUN apk add --no-cache \
+    libzip-dev \
+    zip \
+    && docker-php-ext-install zip
