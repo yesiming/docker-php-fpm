@@ -48,3 +48,5 @@ RUN apk add --no-cache \
     libzip-dev \
     zip \
     && docker-php-ext-install zip
+
+RUN apk add --no-cache git
