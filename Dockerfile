@@ -13,8 +13,8 @@ RUN apk add --update --no-cache --virtual .ext-deps \
         make \
         curl \
         curl-dev \
-        php7-openssl \
-        php7-curl
+        php8-openssl \
+        php8-curl
 
 RUN apk add --no-cache \
     libmcrypt-dev \
