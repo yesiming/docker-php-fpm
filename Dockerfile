@@ -1,4 +1,4 @@
-FROM php:7.3-fpm-alpine
+FROM php:8-fpm-alpine
 MAINTAINER simon simon@yesiming.com
 
 RUN apk add --update --no-cache --virtual .ext-deps \
