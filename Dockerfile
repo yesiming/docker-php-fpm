@@ -41,6 +41,14 @@ RUN \
     pecl clear-cache && \
     docker-php-source delete
 
+RUN \
+    pecl channel-update pecl.php.net && \
+    pecl install imagick &&\
+    docker-php-ext-enable imagick && \
+    pecl clear-cache && \
+    docker-php-source delete
+   
+
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/bin --filename=composer
 
 RUN docker-php-ext-install bcmath
