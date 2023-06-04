@@ -39,6 +39,7 @@ RUN \
     docker-php-source delete
 
 RUN \
+    apk add imagemagick-dev && \
     pecl channel-update pecl.php.net && \
     pecl install imagick &&\
     docker-php-ext-enable imagick && \
