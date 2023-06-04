@@ -34,8 +34,10 @@ RUN \
     pecl channel-update pecl.php.net && \
     pecl install redis && \
     pecl install mongodb && \
+    
+    docker-php-ext-enable redis mongodb mysqli && \
     pecl install imagick &&\
-    docker-php-ext-enable redis mongodb mysqli imagick && \
+    docker-php-ext-enable imagick && \
     pecl clear-cache && \
     docker-php-source delete
 
