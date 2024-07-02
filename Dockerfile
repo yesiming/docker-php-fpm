@@ -1,4 +1,4 @@
-FROM php:7.3-fpm-alpine
+FROM php:8.1-fpm-alpine
 MAINTAINER simon simon@yesiming.com
 
 RUN apk add --update --no-cache --virtual .ext-deps \
@@ -13,8 +13,8 @@ RUN apk add --update --no-cache --virtual .ext-deps \
         make \
         curl \
         curl-dev \
-        php7-openssl \
-        php7-curl
+        php8-openssl \
+        php8-curl
 
 RUN apk add --no-cache \
     libmcrypt-dev \
@@ -48,3 +48,5 @@ RUN apk add --no-cache \
     libzip-dev \
     zip \
     && docker-php-ext-install zip
+
+RUN apk add --no-cache git
