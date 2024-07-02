@@ -1,5 +1,6 @@
 FROM php:8.1-fpm-alpine
 MAINTAINER simon simon@yesiming.com
+RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.ustc.edu.cn/g' /etc/apk/repositories
 
 RUN apk add --update --no-cache --virtual .ext-deps \
         libjpeg-turbo-dev \
@@ -24,8 +25,7 @@ RUN \
     docker-php-ext-configure pdo_mysql && \
     docker-php-ext-configure opcache && \
     docker-php-ext-configure exif && \
-    docker-php-ext-configure gd \
-    --with-jpeg-dir=/usr/include --with-png-dir=/usr/include --with-webp-dir=/usr/include --with-freetype-dir=/usr/include && \
+    docker-php-ext-configure gd && \
     docker-php-ext-configure sockets && \
     docker-php-ext-install pdo_mysql opcache exif gd sockets mysqli
 
