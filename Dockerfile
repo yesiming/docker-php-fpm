@@ -50,3 +50,11 @@ RUN apk add --no-cache \
     && docker-php-ext-install zip
 
 RUN apk add --no-cache git
+
+RUN git clone https://github.com/yitter/idgenerator.git && \
+    cd idgenerator/PHP && \
+    phpize && \
+    ./configure --with-php-config=/path/php-config && \
+    make && \
+    make install && \
+    echo "extension=snowdrift" > /usr/local/etc/php/conf.d/docker-php-ext-snowid.ini
